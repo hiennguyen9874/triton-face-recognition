@@ -1,0 +1,23 @@
+name: "FaceRecognition"
+platform: "tensorrt_plan"
+max_batch_size: 16
+dynamic_batching { }
+input [
+  {
+    name: "input.1"
+    data_type: TYPE_FP32
+    dims: [ 3, 112, 112 ]
+  }
+]
+output [
+  {
+    name: "683"
+    data_type: TYPE_FP32
+    dims: [ 512 ]
+  }
+]
+instance_group [
+  {
+    kind: KIND_GPU
+  }
+]

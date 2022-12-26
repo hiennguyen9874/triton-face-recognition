@@ -1,0 +1,54 @@
+name: "FaceDetectionPostProcessing"
+backend: "python"
+max_batch_size: 4
+dynamic_batching { }
+input [
+  {
+    name: "det_boxes"
+    data_type: TYPE_FP32
+    dims: [ 100, 4 ]
+  }
+]
+input [
+  {
+    name: "det_lmks"
+    data_type: TYPE_FP32
+    dims: [ 100, 10 ]
+  }
+]
+input [
+  {
+    name: "IMGSIZE"
+    data_type: TYPE_INT32
+    dims: [ 2 ]
+  }
+]
+input [
+  {
+    name: "RATIO"
+    data_type: TYPE_FP32
+    dims: [ 2 ]
+  }
+]
+input [
+  {
+    name: "PAD"
+    data_type: TYPE_FP32
+    dims: [ 2 ]
+  }
+]
+output [
+  {
+    name: "det_boxes"
+    data_type: TYPE_FP32
+    dims: [ 100, 4 ]
+  }
+]
+output [
+  {
+    name: "det_lmks"
+    data_type: TYPE_FP32
+    dims: [ 100, 10 ]
+  }
+]
+instance_group [{ kind: KIND_CPU }]

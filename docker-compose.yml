@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+  triton:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DGPU_ARCHS: 75
+        TRITON_VERSION: "21.10"
+        TRT_OSS_CHECKOUT_TAG: release/8.2
+        TENSORRT_REPO: https://github.com/hiennguyen9874/TensorRT
+    command:
+      [
+        "tritonserver",
+        "--model-repository=/models",
+        "--strict-model-config=false",
+        "--log-verbose=1",
+        "--backend-config=python,shm-default-byte-size=268435456",
+      ]
+    volumes:
+      - ./models:/models
+    environment:
+      # USE_NEW_NVSTREAMMUX: "yes"
+      NVIDIA_VISIBLE_DEVICES: 0
+      NVIDIA_DRIVER_CAPABILITIES: all
+    expose:
+      - 8000
+      - 8001
+      - 8002
+    ports:
+      - 48000:8000
+      - 48001:8001
+      - 48002:8002
+    runtime: nvidia
+    restart: unless-stopped
+    ipc: host
+    shm_size: 4g
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    # https://github.com/NVIDIA/nccl/issues/360#issuecomment-670650867
+    pid: "host"

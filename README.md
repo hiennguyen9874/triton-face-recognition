@@ -1,0 +1,3 @@
+- Export face detection model: `docker-compose run --rm triton /usr/src/tensorrt/bin/trtexec --onnx=/models/FaceDetection/1/yolov7-tiny41-nms-trt.onnx --saveEngine=/models/FaceDetection/1/model.plan --fp16 --minShapes=images:1x3x640x640 --optShapes=images:1x3x640x640 --maxShapes=images:4x3x640x640 --shapes=images:1x3x640x640 --workspace=12288`
+
+- Export face detection model: `docker-compose run --rm triton /usr/src/tensorrt/bin/trtexec --onnx=/models/FaceRecognition/1/webface_r50_dynamic_simplify_cleanup.onnx --saveEngine=/models/FaceRecognition/1/model.plan --fp16 --minShapes=input.1:1x3x112x112 --optShapes=input.1:1x3x112x112 --maxShapes=input.1:16x3x112x112 --shapes=input.1:1x3x112x112 --workspace=12288`

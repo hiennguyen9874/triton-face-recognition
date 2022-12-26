@@ -1,0 +1,24 @@
+[flake8]
+max-line-length = 100
+max-complexity = 8
+ignore = D100,D101,D102,D103,D104,D105,D106,D107,D412,W503,E203,E501,B008,B901,B001,E722,B902
+select = B,C,E,F,W,T4,B9
+per-file-ignores =
+  *tests/*:D205,D400,D401,S101,S106,E501,E731
+  */migrations/*:E501,D400
+  */versions/*:E501,D400
+  */settings.py:F403,F405
+  */settings/*:F403,F405
+  */__init__.py:F403,F401
+exclude =
+    migrations
+    alembic
+    versions
+    __pycache__
+    manage.py
+    settings.py
+    env
+    .env
+    ./env
+    env/
+    .env/

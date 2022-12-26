@@ -1,0 +1,26 @@
+name: "FaceAligment"
+backend: "python"
+max_batch_size: 256
+dynamic_batching { }
+input [
+  {
+    name: "INPUT0"
+    data_type: TYPE_UINT8
+    dims: [ 112, 112, 3 ]
+  }
+]
+input [
+  {
+    name: "INPUT1"
+    data_type: TYPE_FP32
+    dims: [ 10 ]
+  }
+]
+output [
+  {
+    name: "OUTPUT"
+    data_type: TYPE_UINT8
+    dims: [ 112, 112, 3 ]
+  }
+]
+instance_group [{ kind: KIND_CPU }]
