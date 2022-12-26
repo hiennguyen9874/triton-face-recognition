@@ -1,5 +1,11 @@
 # Triton face recogition
 
+### Prerequisites
+
+-   Docker
+-   Nvidia-driver
+-   Nvidia-docker2
+
 ## Export `.engine`
 
 ### Face detection model
@@ -16,3 +22,7 @@
 -   Download `webface_r50.onnx` from [deepinsight/insightface](https://github.com/deepinsight/insightface/blob/master/model_zoo/README.md) and cleaning onnx file: `python3 scripts/onnx_clean.py --onnx-path samples/models/Secondary_Recognition/ms1mv3_r50_pfc.onnx --image-size 112,112 --batch-size 1 --simplify --dynamic --cleanup`
 -   Or download onnx file from from: [github.com/hiennguyen9874/deepstream-face-recognition/releases/tag/v0.1](https://github.com/hiennguyen9874/deepstream-face-recognition/releases/tag/v0.1)
 -   Export to TensorRT: `docker-compose run --rm triton /usr/src/tensorrt/bin/trtexec --onnx=/models/FaceRecognition/1/webface_r50_dynamic_simplify_cleanup.onnx --saveEngine=/models/FaceRecognition/1/model.plan --fp16 --minShapes=input.1:1x3x112x112 --optShapes=input.1:1x3x112x112 --maxShapes=input.1:16x3x112x112 --shapes=input.1:1x3x112x112 --workspace=12288`
+
+## Run demo
+
+-   [main.ipynb](main.ipynb)
