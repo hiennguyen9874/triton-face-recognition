@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: onnx_clean.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/onnx_clean.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--onnx-path=./models/FaceRecognition/1/webface_r50.onnx",
+                "--image-size=112,112",
+                "--batch-size=1",
+                "--simplify",
+                "--dynamic",
+                "--cleanup",
+                "--add-norm"
+            ]
+        }
+    ]
+}

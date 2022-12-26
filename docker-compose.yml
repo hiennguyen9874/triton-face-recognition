@@ -42,4 +42,4 @@ services:
     stdin_open: true # docker run -i
     tty: true # docker run -t
     # https://github.com/NVIDIA/nccl/issues/360#issuecomment-670650867
-    pid: "host"
+    pid: host
