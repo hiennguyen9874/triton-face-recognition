@@ -1,5 +1,7 @@
 # Triton face recogition
 
+End-to-end deploy face detection, face align, face recogition in triton inference server
+
 ### Prerequisites
 
 -   Docker
