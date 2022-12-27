@@ -27,4 +27,5 @@ End-to-end deploy face detection, face align, face recogition in triton inferenc
 
 ## Run demo
 
+-   Up docker: `docker-compose up --build`
 -   [main.ipynb](main.ipynb)
